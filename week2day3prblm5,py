@@ -1,0 +1,32 @@
+def first_occurrence(arr, n, k):
+    ans = -1
+    low, high = 0, n - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == k:
+            ans = mid
+            high = mid - 1
+        elif arr[mid] > k:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return ans
+    
+def last_occurrence(arr, n, k):
+    ans = -1
+    low, high = 0, n - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == k:
+            ans = mid
+            low = mid + 1
+        elif arr[mid] > k:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return ans
+    
+if __name__ == "__main__":
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    print(first_occurrence(arr, n, k) ,last_occurrence(arr, n, k))
